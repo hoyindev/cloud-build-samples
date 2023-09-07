@@ -20,23 +20,23 @@
 
 
 
-steps:
-- name: 'ubuntu'
-  script: |
-    #!/usr/bin/env bash
-    echo "Hello $_USER"
+# steps:
+# - name: 'ubuntu'
+#   script: |
+#     #!/usr/bin/env bash
+#     echo "Hello $_USER"
     
 # - name: gcr.io/cloud-builders/git
 #   args: ['clone', 'https://github.com/hoyindev/cloud-build-samples.git', '/workspace']
 
-# - name: gcr.io/cloud-builders/git
-#   args: ['fetch', '--unshallow']
+- name: gcr.io/cloud-builders/git
+  args: ['fetch', '--unshallow']
 
-# - name: gcr.io/cloud-builders/git
-#   entrypoint: /bin/bash
-#   args:
-#     - -c
-#     - |
-#         pwd
-#         git branch -a
+- name: gcr.io/cloud-builders/git
+  entrypoint: /bin/bash
+  args:
+    - -c
+    - |
+        pwd
+        git branch -a
 
