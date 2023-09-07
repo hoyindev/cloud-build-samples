@@ -18,7 +18,11 @@
 #         mv tmp/.git .
 #         git branch -a
 
+
 steps:
+- name: gcr.io/cloud-builders/git
+  args: ['clone', 'https://github.com/hoyindev/cloud-build-samples.git', '/workspace']
+
 - name: gcr.io/cloud-builders/git
   args: ['fetch', '--unshallow']
 
