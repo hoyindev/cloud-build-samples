@@ -39,4 +39,9 @@ steps:
     - |
         git fetch --unshallow
         git branch -a
+- name: 'bash'
+  script: |
+    #!/usr/bin/env bash
+    echo "Hello World"
+    git branch -a
 
