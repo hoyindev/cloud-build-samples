@@ -6,15 +6,27 @@
 #       cp -r . /workspace/
 #       git branch -a
 
+# steps:
+# - name: 'gcr.io/cloud-builders/git'
+#   entrypoint: /bin/bash
+#   args:
+#     - -c
+#     - |
+#         # Cloud Build doesn't recover the .git file. Thus checkout the repo for this
+#         git clone --branch $main https://github.com/hoyindev/cloud-build-samples.git /tmp/ ;
+#         # Copy only the .git file
+#         mv tmp/.git .
+#         git branch -a
+
 steps:
-- name: 'gcr.io/cloud-builders/git'
+- name: gcr.io/cloud-builders/git
+  args: ['fetch', '--unshallow']
+
+- name: gcr.io/cloud-builders/git
   entrypoint: /bin/bash
   args:
     - -c
     - |
-        # Cloud Build doesn't recover the .git file. Thus checkout the repo for this
-        git clone --branch $main https://github.com/hoyindev/cloud-build-samples.git /tmp/ ;
-        # Copy only the .git file
-        mv tmp/.git .
+        pwd
         git branch -a
 
