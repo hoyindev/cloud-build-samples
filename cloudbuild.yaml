@@ -1,8 +1,20 @@
+# steps:
+#   - id: test-builds-successfully
+#     name: bash
+#     script: |
+#       #!/usr/bin/env bash
+#       cp -r . /workspace/
+#       git branch -a
+
 steps:
-  - id: test-builds-successfully
-    name: bash
-    script: |
-      #!/usr/bin/env bash
-      cp -r . /workspace/
-      git branch -a
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: /bin/bash
+  args:
+    - -c
+    - |
+        # Cloud Build doesn't recover the .git file. Thus checkout the repo for this
+        git clone --branch $BRANCH_NAME https://github.com/path/to/yourRepo.git /tmp/repo ;
+        # Copy only the .git file
+        mv /tmp/repo/.git .
+        git branch -a
 
