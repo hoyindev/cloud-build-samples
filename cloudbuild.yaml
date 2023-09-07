@@ -13,8 +13,8 @@ steps:
     - -c
     - |
         # Cloud Build doesn't recover the .git file. Thus checkout the repo for this
-        git clone --branch $main https://github.com/hoyindev/cloud-build-samples.git / ;
+        git clone --branch $main https://github.com/hoyindev/cloud-build-samples.git /tmp/repo ;
         # Copy only the .git file
-        mv .git .
+        mv /tmp/repo/.git .
         git branch -a
 
