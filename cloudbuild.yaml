@@ -1,6 +1,6 @@
 steps:
   - id: test-builds-successfully
-    name: basj
+    name: bash
     script: |
       #!/usr/bin/env bash
       git branch -a
