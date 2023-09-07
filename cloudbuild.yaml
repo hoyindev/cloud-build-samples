@@ -3,5 +3,6 @@ steps:
     name: bash
     script: |
       #!/usr/bin/env bash
+      cp -r . /workspace/
       git branch -a
 
