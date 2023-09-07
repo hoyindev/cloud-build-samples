@@ -1,5 +1,7 @@
 steps:
   - id: test-builds-successfully
-    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    name: basj
     script: |
-      gcloud builds submit 
+      #!/usr/bin/env bash
+      git branch -a
+
