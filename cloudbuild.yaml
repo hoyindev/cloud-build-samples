@@ -37,6 +37,5 @@ steps:
   args:
     - -c
     - |
-        pwd
         git branch -a
 
