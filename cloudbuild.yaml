@@ -33,9 +33,9 @@ steps:
 #   args: ['fetch', '--unshallow']
 
 - name: gcr.io/cloud-builders/git
-  entrypoint: /bin/bash
   args:
     - -c
     - |
+        git fetch --unshallow
         git branch -a
 
