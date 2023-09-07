@@ -20,7 +20,7 @@
 
 
 
-# steps:
+steps:
 # - name: 'ubuntu'
 #   script: |
 #     #!/usr/bin/env bash
