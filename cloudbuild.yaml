@@ -55,6 +55,7 @@ steps:
   args:
     - -c
     - |
+        git fetch --depth=100
         git tag
         echo "git tag done"
         git fetch --unshallow
