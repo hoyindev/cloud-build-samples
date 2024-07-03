@@ -66,3 +66,19 @@ steps:
       echo $(git tag)
       echo "test done"
 
+- name: gcr.io/cloud-builders/git
+  id: unshallow
+  entrypoint: /bin/bash
+  args:
+    - -c
+    - |
+        git fetch --unshallow
+        git branch -a
+- name: 'bash'
+  id: bash
+  script: |
+    #!/usr/bin/env bash
+    echo "Bash"
+    git branch -a
+
+
