@@ -54,7 +54,9 @@ steps:
     - -c
     - |
       git config http.sslVerify false
+      echo "config"
       git fetch
+      echo "fetch"
       tag1=$(git tag --sort=-creatordate | head -n 1)
       tag2=$(git tag --sort=-creatordate | head -n 2 | tail -n 1)
       files=$(git diff $tag1 $tag2 --name-only)
