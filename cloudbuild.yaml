@@ -55,8 +55,7 @@ steps:
   args:
     - -c
     - |
-        echo "git tag done"
-        git fetch --unshallow
+        git fetch 
         echo "fetch unshallow done"
         git branch -a
         echo "branch"
