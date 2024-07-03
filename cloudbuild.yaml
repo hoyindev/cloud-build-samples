@@ -63,6 +63,7 @@ steps:
         tag2=$(git tag --sort=-creatordate | head -n 2 | tail -n 1)
         files=$(git diff $tag1 $tag2 --name-only)
         diff=$(git diff $tag1 $tag2)
+        echo $diff
         echo "test done"
 
 
