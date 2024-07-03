@@ -46,7 +46,31 @@
 #     git branch -a
 
 #
+
 steps:
+
+- name: gcr.io/cloud-builders/git
+  id: unshallow
+  entrypoint: /bin/bash
+  args:
+    - -c
+    - |
+        git tag
+        echo "git tag done"
+        git fetch --unshallow
+        echo "fetch unshallow done"
+        git branch -a
+        echo "branch"
+        tag1=$(git tag --sort=-creatordate | head -n 1)
+        tag2=$(git tag --sort=-creatordate | head -n 2 | tail -n 1)
+        files=$(git diff $tag1 $tag2 --name-only)
+        diff=$(git diff $tag1 $tag2)
+        echo $diff
+        echo "git tag"
+        echo $(git tag)
+        echo "test done"
+
+
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   id: test
   entrypoint: 'bash'
@@ -65,24 +89,3 @@ steps:
       echo "git tag"
       echo $(git tag)
       echo "test done"
-
-- name: gcr.io/cloud-builders/git
-  id: unshallow
-  entrypoint: /bin/bash
-  args:
-    - -c
-    - |
-        git fetch --unshallow
-        echo "fetch unshallow done"
-        git branch -a
-        echo "branch"
-        tag1=$(git tag --sort=-creatordate | head -n 1)
-        tag2=$(git tag --sort=-creatordate | head -n 2 | tail -n 1)
-        files=$(git diff $tag1 $tag2 --name-only)
-        diff=$(git diff $tag1 $tag2)
-        echo $diff
-        echo "git tag"
-        echo $(git tag)
-        echo "test done"
-
-
