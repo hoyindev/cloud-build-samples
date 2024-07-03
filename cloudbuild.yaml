@@ -55,13 +55,13 @@ steps:
   args:
     - -c
     - |
-        git fetch --depth=100
-        git tag
         echo "git tag done"
         git fetch --unshallow
         echo "fetch unshallow done"
         git branch -a
         echo "branch"
+        echo "git tag"
+        echo $(git tag)
         tag1=$(git tag --sort=-creatordate | head -n 1)
         tag2=$(git tag --sort=-creatordate | head -n 2 | tail -n 1)
         files=$(git diff $tag1 $tag2 --name-only)
